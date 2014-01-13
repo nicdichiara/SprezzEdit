@@ -1,8 +1,8 @@
 SprezzEdit
 ==========
 
-SprezzEdit is a client-side webapp providing SublimeText style live web development.
-Test is out in it's current alpha state at nickdichiara.com/sprezzedit
+SprezzEdit is a client-side webapp providing SublimeText style live web development.<br />
+Test is out in it's current alpha state at http://nickdichiara.com/sprezzedit
 
 
 When I started this project I had three motivations:<br />
@@ -27,8 +27,8 @@ Also thanks to [NoxArt](https://github.com/NoxArt) for helping me decide to push
 
 TODO
 -------------
-\[ \]JS Web Scraping.<br />
-\[ \]FTP up &amp; down.<br />
-\[ \]Context Menu(tabs &amp; such).<br />
-\[ \]Handle links from within #site.<br />
-\[ \]Keep Div unaffected by other styles.<br />
+\[ \] JS Web Scraping.<br />
+\[ \] FTP up &amp; down.<br />
+\[ \] Context Menu(tabs &amp; such).<br />
+\[ \] Handle links from within #site.<br />
+\[ \] Keep Div unaffected by other styles.<br />
