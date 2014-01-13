@@ -1,0 +1,195 @@
+html,body{
+  padding:0;
+  margin:0;
+  height:100%;
+  width:100%;
+  /*overflow: scroll;*/
+}
+#scopedwrapper{
+  height:100%;
+  width:100%;
+}
+#ide{ 
+  display: block; 
+  width: 37%; 
+  height: 90%; 
+  padding: 0px; 
+  overflow: hidden; 
+  position: absolute;
+  right: 0px; 
+  top:0px;
+  z-index:2;
+  border: solid 2px #cbcbcb;
+  -moz-box-shadow: 0px 0px 10px #cbcbcb;
+  -webkit-box-shadow: 0px 0px 10px #cbcbcb;
+  -webkit-filter: opacity(99%);
+  /*background-color: #272822;*/
+  background-color: #171814;
+  /*font-family: monospace; */
+  /*font-family: 'Droid Sans Mono', sans-serif;*/
+  color: #f5f4f1;
+}
+.ui-resizable-helper { 
+  border: 1px dotted gray; 
+}
+#webview{
+  z-index:1;
+  position:absolute;
+  width:100%;
+  height: 100%; 
+  margin:0px;
+  padding:0px;
+}
+#popide{ 
+  display: block; 
+  margin:0px;
+  padding: 0px; 
+  height:100%;
+  overflow: hidden; 
+  background-color: #272822;
+  font-family: monospace; 
+  color: #f5f4f1;
+}
+#temp{
+  display:none;
+}
+
+#phoneview{
+  display: none;
+  position:absolute;
+  top:300px;
+  left:25px;
+  width:6.111875cm;
+  height:10.742083333cm;
+  background-color: white;
+  z-index:5;
+  border: solid 2px #cbcbcb;
+  -moz-box-shadow: 0px 0px 10px #cbcbcb;
+  -webkit-box-shadow: 0px 0px 10px #cbcbcb;
+}
+#phoneview iframe{
+  padding:0;
+  margin:0;
+}
+
+#tabletview{
+  display: none;
+  position:absolute;
+  top:300px;
+  left:25px;
+  width:14.375cm;
+  height:10.75cm;
+  background-color: white;
+  z-index:5;
+  border: solid 2px #cbcbcb;
+  -moz-box-shadow: 0px 0px 10px #cbcbcb;
+  -webkit-box-shadow: 0px 0px 10px #cbcbcb;
+}
+#tabletview iframe{
+  padding:0;
+  margin:0;
+}
+
+
+
+#sprezztabs{
+  background : #272822;
+  margin: 0;
+  color: #f5f4f1;
+  height:686px;
+}
+
+#tab_container{
+  background : #171814;
+  margin: 0;
+  padding: 0;
+  max-height: 35px;
+}
+
+ul.sptabs{
+  margin: 0;
+  list-style-type : none;
+  line-height : 35px;
+  max-height: 35px;
+  overflow: hidden;
+  display: inline-block;
+  padding-right: 20px
+}
+
+ul.sptabs > li.active{
+  z-index: 2;
+  background: #272822;
+}
+
+ul.sptabs > li.active:before{
+  border-color : transparent #272822 transparent transparent;
+}
+
+
+ul.sptabs > li.active:after{
+  border-color : transparent transparent transparent #272822;
+}
+
+ul.sptabs > li{
+  float : right;
+  margin : 5px -10px 0;
+  border-top-right-radius: 25px 170px;
+  border-top-left-radius: 20px 90px;
+  padding : 0 30px 0 25px;
+  height: 170px;
+  background: #49483e;
+  position : relative;
+  box-shadow: 0 10px 20px rgba(0,0,0,.5);
+  max-width : 200px;
+}
+
+ul.sptabs > li > a{
+  display: inline-block;
+  max-width:100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-decoration: none;
+  color: #f5f4f1;
+}
+
+ul.sptabs > li:before, ul.sptabs > li:after{
+  content : '';
+  background : transparent;
+  height: 20px;
+  width: 20px;
+  border-radius: 100%;
+  border-width: 10px;
+  top: 0px;
+  border-style : solid;
+  position : absolute;
+}
+
+ul.sptabs > li:before{
+  border-color : transparent #49483e transparent transparent;
+  -webkit-transform : rotate(48deg);
+  left: -23px;
+}
+
+ul.sptabs > li:after{
+  border-color : transparent transparent transparent #49483e;
+  -webkit-transform : rotate(-48deg);
+  right: -17px;
+}
+#tab_contents div.inactive{
+  height:0;
+  visibility:hidden;
+}
+#tab_contents div.active {
+  visibility: visible;
+  height:670px; /*CHANGE TO AUTO WHEN THE OTHER TEXT AREAS ARE ADDED*/
+}
+.deltab{
+  margin-left: 20px;
+}
+
+
+/* Clear Fix took for HTML 5 Boilerlate*/
+
+.clearfix:before, .clearfix:after { content: ""; display: table; }
+.clearfix:after { clear: both; }
+.clearfix { zoom: 1; }

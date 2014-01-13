@@ -1,0 +1,217 @@
+	<!--
+   thenickis.me
+   Author: Nicholas DiChiara
+	-->
+<!DOCTYPE html>
+<html>
+<head>
+	<title>SprezzEdit</title>
+</head>
+<body>
+
+
+<div id="webview">
+	<iframe src="about:blank" id="webscreen" seamless style="overflow:hidden;height:100%;width:100%" height="100%" width="100%"></iframe>
+</div>
+
+<div id="phoneview">
+	<iframe src="about:blank" id="phonescreen" seamless style="width:6.111875cm;height:10.742083333cm;"></iframe>
+</div>
+
+<div id="tabletview">
+	<iframe src="about:blank" id="tabletscreen" seamless style="width:14.375cm;height:10.75cm;"></iframe>
+</div>
+
+<div id="temp">
+<html>
+<head>
+<title>SprezzEdit</title>
+	<style>
+	  #yourpage{
+	    width: 900px;
+		height:700px;
+		margin: 40px auto 0 100px;
+		padding: 30px;
+		text-align: center;
+		border: solid 1px #cbcbcb;
+		background: #fafafa;
+		-moz-box-shadow: 0px 0px 10px #cbcbcb;
+		-webkit-box-shadow: 0px 0px 10px #cbcbcb;
+	  }
+	</style>  
+</head>
+<body>
+  <div id="yourpage">
+	<h1>SprezzEdit In-Browser Design Suite</h1>
+	<hr /><br />
+	<h1>Hello, world!</h1>
+	<h1>All changes made in the editing window to the right will automatically reflect here.</h1>
+	<h1>Feel free to move &amp; resize the editing window!</h1>
+  </div>
+</body>
+</html>	
+</div>	
+
+
+
+<div id="ide" class="resizable">
+	<link rel="stylesheet" type="text/css" href="css/bootstrap.css"></link>
+	<link href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css"rel="stylesheet" />
+	<link rel="stylesheet" type="text/css" href="css/style.css"></link>
+	<script src="codemirror/lib/codemirror.js"></script>
+	<script src="codemirror/mode/htmlmixed/htmlmixed.js" type="text/javascript"></script>
+	<script src="codemirror/mode/xml/xml.js" type="text/javascript"></script>
+	<script src="codemirror/mode/javascript/javascript.js" type="text/javascript"></script>
+	<script src="codemirror/mode/css/css.js" type="text/javascript"></script>
+	<script src="codemirror/mode/vbscript/vbscript.js" type="text/javascript"></script>
+	<link href="codemirror/lib/codemirror.css" rel="stylesheet" type="text/css" />
+	<link href="codemirror/theme/monokai.css" rel="stylesheet" type="text/css" />
+	<!--link href='http://fonts.googleapis.com/css?family=Droid+Sans+Mono' rel='stylesheet' type='text/css'-->
+	
+
+	<div id="navdrag" class="navbar navbar-inverse">
+		<div class="navbar-inner">
+		<div class="container">
+          <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+          <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          </a>
+          <a class="brand" href="#">SprezzEdit</a>
+
+          <!-- Everything hidden at 940px or less, within here -->
+           <div class="nav-collapse collapse">
+        		<ul class="nav">
+					<li class="dropdown">
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-folder-open icon-white"></i> File<span 		class="caret"></span></a>
+						<ul class="dropdown-menu">
+							<li ><a id="acn" href="#"><i class="icon-list-alt"></i> New</a></li>
+	                    	<li><a id="aupload" href="#"><i class="icon-upload"></i> Open (Upload)</a></li>
+							<li><a id="aud" href="#"><i class="icon-inbox"></i> Open (Dropbox)</a></li>
+							<li class="divider"></li>
+							<li><a onclick='Download.save($("#site").html(), "my_file.html")'><i class="icon-download"></i> Save (Download)</a></li>
+							<li><a id="asd" href="#"><i class="icon-inbox"></i> Save (Dropbox)</a></li>
+	            		</ul>
+          			</li>
+
+	          		<li class="dropdown">
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown" id="views"> <i class="icon-eye-open icon-white"></i> View<span class="caret"></span></a>
+						<ul class="dropdown-menu">
+	  						<li><a href="#" onclick="openWin()"><i class="icon-share"></i> Pop-Out</a></li>
+	  						<li class="divider"></li>
+							<li><a onclick='$("#phoneview").toggle()'><i class="icon-inbox"></i> Phone View</a></li>
+							<li><a onclick='$("#tabletview").toggle()'><i class="icon-inbox"></i> Tablet View(7")</a></li>
+	            		</ul>
+	          		</li>
+
+	          		<li class="dropdown">
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-refresh icon-white"></i><span class="caret"></span></a>
+						<ul class="dropdown-menu">
+							<li><a href="#" onclick="updateText()"><i class="icon-refresh"></i> Code</a></li>
+	  						<li class="divider"></li>
+							<li><a href="#" onclick="updateSite()"><i class="icon-refresh"></i> Site</a></li>
+	            		</ul>
+	          		</li>
+
+	          		<li class="dropdown">
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown" id="settings"> <i class="icon-align-justify icon-white"></i> </a>
+						<ul class="dropdown-menu">
+							<li class="divider"></li>
+	            		</ul>
+	          		</li>
+       		 	</ul>
+      		</div>
+		</div>
+		</div>
+	</div>
+
+
+	<div id="sprezztabs">
+  		<div id="tab_container">
+    		<ul id="tablist" class="sptabs clearfix">
+
+      			<li id="add"><a id="add-tab" href="#"> <i class="icon-plus-sign"></i> </a></li>
+      			<li class="active">
+      				<a href="#" rel="#tab1" class="tab">Tab 1 </a> 
+      				<a href="#" class="deltab"><i class="icon-remove"></i></a>
+      			</li>
+    		</ul> 
+  		</div>
+
+  		<div id="tab_contents">
+    		<div id="tab1" class="active">
+    			<textarea id="code1" name="code"></textarea>
+    		</div>
+  		</div>
+	</div>
+
+
+	<script src="http://code.jquery.com/jquery.js"></script>
+	<script src="js/bootstrap.js"></script>
+	<script src="js/jquery.slimscroll.min.js"></script>
+	<script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+	<script type="text/javascript" src="https://www.dropbox.com/static/api/1/dropins.js" id="dropboxjs" data-app-key="1ebneh0n0er4ix5"></script>
+	<script src="js/sprezzedit.js"></script>
+	
+
+	<input type="file" id="files"  style="display:none;" name="files[]" multiple /> <!--Invisible Upload button. Replace soon-->
+	
+	<script> //Doesnt work when moved to external js. Find out why. 
+      function handleFileSelect(evt) {
+        var files = evt.target.files; // FileList object
+        // Loop through the FileList
+        for (var i = 0, f; f = files[i]; i++) {
+          var reader = new FileReader();
+
+          // Closure to capture the file information.
+          reader.onload = (function(theFile) {
+            return function(e) {
+              // Print the contents of the file
+              var span = document.createElement('span');                    
+              span.innerHTML = ['<p>',e.target.result,'</p>'].join('');
+              //document.getElementById('list').insertBefore(span, null); THIS IS THE OG
+              $('#temp').html(span);
+              updateText();
+              //updateSite2(); Figure this out.
+            };
+          })(f);
+
+          // Read in the file
+          //reader.readAsDataText(f,UTF-8);
+          reader.readAsText(f,"UTF-8");
+        }
+      }
+
+      document.getElementById('files').addEventListener('change', handleFileSelect, false);
+    </script>
+
+
+
+	</div><!--/ide-->
+	<!--iframe seamless src="file:///C:/Users/Nick/" style="" height="200px" width="400px" ></iframe-->
+    
+    <script>
+		var confirmOnPageExit = function (e) 
+	{
+		// If we haven't been passed the event get the window.event
+		e = e || window.event;
+	
+		var message = 'You still have unsaved files!';
+	
+		// For IE6-8 and Firefox prior to version 4
+		if (e) 
+		{
+			e.returnValue = message;
+		}
+	
+		// For Chrome, Safari, IE8+ and Opera 12+
+		return message;
+};
+
+// Turn it on - assign the function that returns the string
+window.onbeforeunload = confirmOnPageExit;
+
+</script>
+</body>
+</html>

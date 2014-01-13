@@ -1,0 +1,102 @@
+<html>
+<head>
+<title>dl text demo</title>
+</head>
+<body>
+
+put text here:<br />
+<textarea rows='10' cols='80' id='t1' ></textarea>	
+
+<br /><br /> 
+
+<div id="site">
+	YEAH IT WORKS
+</div>
+
+	<script src="http://code.jquery.com/jquery.js"></script>
+then click here: <br />
+<input value='download' type='button' 
+onclick='doDL(document.getElementById("t1").value)' />	
+
+
+
+<input value='download' type='button' 
+onclick='Download.save($("#site").html(), "my_file.html")' />
+
+
+
+
+<script type='text/javascript'>
+function doDL(s){
+function dataUrl(data) {return "data:x-application/text," + 
+escape(data.replace(/\r?\n/g,"\r\n"));}
+if("\v"=="v"){//IE?
+var d= document.open();
+d.write(s);
+d.execCommand( "saveAs", true, 
+location.href.split("/").reverse()[0]
+);
+d.close();
+return;
+}//end IE?
+window.open(dataUrl(s));
+}//end doDL()
+</script>
+
+
+
+<script>
+var Download = {
+    click : function(node) {
+        var ev = document.createEvent("MouseEvents");
+        ev.initMouseEvent("click", true, false, self, 0, 0, 0, 0, 0, false, false, false, false, 0, null);
+        return node.dispatchEvent(ev);
+    },
+    encode : function(data) {
+            return 'data:application/octet-stream;base64,' + btoa( data );
+    },
+    link : function(data, name){
+        var a = document.createElement('a');
+        a.download = name || self.location.pathname.slice(self.location.pathname.lastIndexOf('/')+1);
+        a.href = data || self.location.href;
+        return a;
+    }
+};
+
+Download.save = function(data, name){
+    this.click(
+        this.link(
+            this.encode( data ),
+            name
+        )
+    );
+};
+
+</script>
+
+
+<div >
+      <div style="display: inline-block; font-size: 13px; font-weight: bold; padding: 15px; margin: 0 5px 10px 0;background-color: #272822">#272822</div>
+      <div style="display: inline-block; font-size: 13px; font-weight: bold; padding: 15px; margin: 0 5px 10px 0;background-color: #383830">#383830</div>
+      <div style="display: inline-block; font-size: 13px; font-weight: bold; padding: 15px; margin: 0 5px 10px 0;background-color: #49483e">#49483e</div>
+      <div style="display: inline-block; font-size: 13px; font-weight: bold; padding: 15px; margin: 0 5px 10px 0;background-color: #75715e">#75715e</div>
+      <div style="display: inline-block; font-size: 13px; font-weight: bold; padding: 15px; margin: 0 5px 10px 0;background-color: #a59f85">#a59f85</div>
+      <div style="display: inline-block; font-size: 13px; font-weight: bold; padding: 15px; margin: 0 5px 10px 0;background-color: #f8f8f2">#f8f8f2</div>
+      <div style="display: inline-block; font-size: 13px; font-weight: bold; padding: 15px; margin: 0 5px 10px 0;background-color: #f5f4f1">#f5f4f1</div>
+      <div style="display: inline-block; font-size: 13px; font-weight: bold; padding: 15px; margin: 0 5px 10px 0;background-color: #f9f8f5">#f9f8f5</div>
+      <br />
+      <div style="display: inline-block; font-size: 13px; font-weight: bold; padding: 15px; margin: 0 5px 10px 0;background-color: #f92672">#f92672</div>
+      <div style="display: inline-block; font-size: 13px; font-weight: bold; padding: 15px; margin: 0 5px 10px 0;background-color: #fd971f">#fd971f</div>
+      <div style="display: inline-block; font-size: 13px; font-weight: bold; padding: 15px; margin: 0 5px 10px 0;background-color: #f4bf75">#f4bf75</div>
+      <div style="display: inline-block; font-size: 13px; font-weight: bold; padding: 15px; margin: 0 5px 10px 0;background-color: #a6e22e">#a6e22e</div>
+      <div style="display: inline-block; font-size: 13px; font-weight: bold; padding: 15px; margin: 0 5px 10px 0;background-color: #a1efe4">#a1efe4</div>
+      <div style="display: inline-block; font-size: 13px; font-weight: bold; padding: 15px; margin: 0 5px 10px 0;background-color: #66d9ef">#66d9ef</div>
+      <div style="display: inline-block; font-size: 13px; font-weight: bold; padding: 15px; margin: 0 5px 10px 0;background-color: #ae81ff">#ae81ff</div>
+      <div style="display: inline-block; font-size: 13px; font-weight: bold; padding: 15px; margin: 0 5px 10px 0;background-color: #cc6633">#cc6633</div>
+    </div>
+	
+	
+
+<iframe src="file:///C:/Users/Nick/" height="200px" width="400px"></iframe>>
+</body>
+</html>

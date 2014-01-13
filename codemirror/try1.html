@@ -1,0 +1,59 @@
+<script src="codemirror/lib/codemirror.js"></script>
+<script src="codemirror/mode/clike/clike.js" type="text/javascript"></script>
+<link href="codemirror/lib/codemirror.css" rel="stylesheet" type="text/css" />
+<link href="codemirror/theme/default.css" rel="stylesheet" type="text/css" />
+
+<style>
+    .CodeMirror {
+        border:1px solid #334;
+        width:800px;
+    }
+</style>
+
+<textarea id="code" name="code">
+using System;
+using System.Collections.Generic;
+using System.Data;
+using System.Data.Entity;
+using System.Linq;
+using System.Web;
+using System.Web.Mvc;
+using MvcMusicStore.Models;
+
+namespace MvcMusicStore.Controllers
+{
+    [Authorize(Roles = "Administrator")]
+    public class StoreManagerController : Controller
+    {
+        private MusicStoreEntities db = new MusicStoreEntities();
+
+        //
+        // GET: /StoreManager/
+
+        public ViewResult Index()
+        {
+            var albums = db.Albums.Include(a => a.Genre).Include(a => a.Artist);
+            return View(albums.ToList());
+        }
+
+        //
+        // GET: /StoreManager/Details/5
+
+        public ViewResult Details(int id)
+        {
+            Album album = db.Albums.Find(id);
+            return View(album);
+        }
+
+        // etc. etc.
+    }
+}
+</textarea> 
+ 
+<script> 
+  var editor = CodeMirror.fromTextArea(document.getElementById("code"), {
+    lineNumbers: true,
+    matchBrackets: true,
+    mode: "text/x-csharp"
+  });
+</script> 

@@ -1,0 +1,95 @@
+
+<html>
+<head>
+<script src="http://code.jquery.com/jquery.js"></script>
+<script src="js/sprezztabs.js"></script>
+<link href="css/sprezztabs.css"rel="stylesheet" />
+<link href="css/bootstrap.css"rel="stylesheet" />
+
+
+<div id="sprezztabs">
+  <div id="tab_container">
+    <ul id="tablist" class="sptabs clearfix">
+
+      <li id="add"><a id="add-tab" href="#"><i class="icon-plus-sign"></i></a></li>
+      <li class="active">
+        <a href="#" rel="#tab1" class="tab">Tab 1</a> 
+        <a href="#" class="deltab"><i class="icon-remove"></i></a>
+      </li>
+    </ul> 
+  </div>
+
+  <div id="tab_contents">
+    <div id="tab1" class="active">
+      <textarea id="code1" name="code">Tab 1 Stuff</textarea>
+    </div>
+
+  </div>
+
+
+  <script src="codemirror/lib/codemirror.js"></script>
+  <script src="codemirror/mode/htmlmixed/htmlmixed.js" type="text/javascript"></script>
+  <script src="codemirror/mode/xml/xml.js" type="text/javascript"></script>
+  <script src="codemirror/mode/javascript/javascript.js" type="text/javascript"></script>
+  <script src="codemirror/mode/css/css.js" type="text/javascript"></script>
+  <script src="codemirror/mode/vbscript/vbscript.js" type="text/javascript"></script>
+  <link href="codemirror/lib/codemirror.css" rel="stylesheet" type="text/css" />
+  <link href="codemirror/theme/monokai.css" rel="stylesheet" type="text/css" />
+
+
+
+
+
+Here is some PHP code:
+<code lang=php>
+  print "Hello World!";
+</code>
+
+And here is some Python code:
+<code lang=python>
+    print "Hello World!";
+</code>  
+
+
+<div id='code_template' style="display: none;">   
+  <textarea></textarea>
+</div>
+
+
+
+
+  <script>
+ function setMode(cm, mode) {
+  if(mode !== undefined) {
+    var script = '/codemirror/mode/'+mode+'/'+mode+'.js';
+
+    $.getScript(script, function(data, success) {
+      if(success) cm.setOption('mode', mode);
+      else cm.setOption('mode', 'clike');
+    });
+  }
+  else cm.setOption('mode', 'clike');
+}
+
+$(document).ready(function () {
+  $('code').each(function() { 
+
+    var lang = $(this).attr('lang');
+    var template = $('#code_template').clone();
+
+        // Take the code and put it into the textarea.
+    template.find('textarea').val($(this).html());
+    template.show();
+    $(this).html(template);
+      
+        var cm = CodeMirror.fromTextArea($(this).find('textarea')[0], {
+        lineNumbers: true,
+        matchBrackets: true
+    });
+    
+        setMode(cm, lang);
+  });
+}
+  </script>
+
+</div>
